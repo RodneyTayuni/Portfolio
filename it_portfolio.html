@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | IT Professional</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #1f2937;
+            --light-gray: #f3f4f6;
+            --border-color: #e5e7eb;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        section {
+            padding: 3rem 0;
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .intro {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .skill-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            flex: 1 0 250px;
+            max-width: 350px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .skill-tag {
+            background-color: var(--light-gray);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .project-info {
+            padding: 1.5rem;
+        }
+        
+        .tech-used {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .experience-item {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .company {
+            font-weight: 600;
+        }
+        
+        .date {
+            color: #6b7280;
+        }
+        
+        .certifications-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+        
+        .certification-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .certification-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .certification-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+        }
+        
+        .contact-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 1rem;
+            width: 24px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        footer {
+            background-color: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .to-top.visible {
+            opacity: 1;
+        }
+        
+        /* Media queries for responsive design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Rodney I. Tayuni</h1>
+            <p>IT Professional | Web Developer | Tech Enthusiast</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section id="about">
+            <div class="container">
+                <div class="intro">
+                    <img src="profile-picture.jpg" alt="Your Profile Photo" class="profile-img">
+                    <h2>About Me</h2>
+                    <p>Hello! I'm an IT professional with a passion for creating efficient technical solutions. With a strong foundation in programming, database management, and troubleshooting, I'm constantly exploring new technologies to expand my skill set. I thrive in collaborative environments where I can apply my analytical thinking and problem-solving abilities to overcome technical challenges.</p>
+                    <p>Currently seeking opportunities in web development, QA testing, or IT support roles where I can contribute my technical knowledge while continuing to learn and grow in the ever-evolving tech landscape.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills" style="background-color: var(--light-gray);">
+            <div class="container">
+                <h2>Technical Skills</h2>
+                <div class="skills-container">
+                    <div class="skill-card">
+                        <i class="fas fa-code"></i>
+                        <h3>Programming</h3>
+                        <p>Experience with multiple programming languages and frameworks for various application development needs.</p>
+                        <div class="skill-list">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C#</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <i class="fas fa-database"></i>
+                        <h3>Database</h3>
+                        <p>Proficient in database design, SQL query optimization, and data management.</p>
+                        <div class="skill-list">
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">Oracle</span>
+                        </div> 
+                    </div>
+                    
+                    <div class="skill-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Web Technologies</h3>
+                        <p>Skills in front-end and back-end technologies for creating responsive web applications.</p>
+                        <div class="skill-list">
+                            <span class="skill-tag">HTML5</span>
+                            <span class="skill-tag">CSS3</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <i class="fas fa-tools"></i>
+                        <h3>IT Support</h3>
+                        <p>Experience diagnosing and resolving technical issues across various platforms.</p>
+                        <div class="skill-list">
+                            <span class="skill-tag">Troubleshooting</span>
+                            <span class="skill-tag">System Admin</span>
+                            <span class="skill-tag">Help Desk</span>
+                            <span class="skill-tag">QA Software Tester</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="projects">
+            <div class="container">
+                <h2>Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="blog-4.webp" alt="Project 1" class="project-img">
+                        <div class="project-info">
+                            <h3>Driving School Management</h3>
+                            <p>Web Application
+                                Aims to create an online platform for the best training school
+                                that enhances the learning experience and improves administrative
+                                processes.</p>
+                            <div class="tech-used">
+                                <span class="skill-tag">PHP</span>
+                                <span class="skill-tag">HTML</span>
+                                <span class="skill-tag">CSS</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">MySQL</span>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <img src="/api/placeholder/600/400" alt="" class="project-img">
+                        <div class="project-info">
+                            <h3></h3>
+                            <p></p>
+                            <div class="tech-used">
+                                <span class="skill-tag"></span>
+                                <span class="skill-tag"></span>
+                                <span class="skill-tag"></span>
+                                <span class="skill-tag"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="experience" style="background-color: var(--light-gray);">
+            <div class="container">
+                <h2>Work Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Call Center - Chat Support</h3>
+                        <span class="company">Direct Data Conversion (DDC)</span>
+                        <span class="date">June 2021 - Oct 2021</span>
+                    </div>
+                    <ul>
+                        <li>Managed shipping and tracking of customer parcels in a UK-based environment</li>
+                        <li>Processed refunds and discounts for defective items</li>
+                        <li>Provided customer support related to logistics and order issues</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Work Immersion</h3>
+                        <span class="company">NTEK System</span>
+                        <span class="date">Jan 2017 - March 2017</span>
+                    </div>
+                    <ul>
+                        <li>Electronics Repair & Maintenance</li>
+                        <li>Audio/Visual Technology</li>
+                        <li>CAD & Design Engineering</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Full-stack Developer Intern</h3>
+                        <span class="company">JCBA Solutions and Consultancy, Inc.</span>
+                        <span class="date">January 2024 - April 2022</span>
+                    </div>
+                    <ul>
+                        <li>Developed and maintained Windows applications</li>
+                        <li>Managed and optimized SQL databases for clients</li>
+                        <li>Designed and generated reports using Crystal Reports</li>
+                        <li>Performed SAP B1 installation, maintenance, and customization</li>
+                        <li>Assisted in troubleshooting and resolving software issues</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="certifications">
+            <div class="container">
+                <h2>Certifications & Training</h2>
+                <div class="certifications-container">
+                    <div class="certification-card">
+                        <img src="aws-picture.jpg" alt="AWS Academy Graduate" class="certification-logo">
+                        <h3>AWS Academy Graduate Certificate</h3>
+                        <p>AWS Academy Cloud</p>
+                        <p><small>Issued: December 2022</small></p>
+                    </div>
+                    
+                    <div class="certification-card">
+                        <img src="Web.png" alt="OJT Certificate" class="certification-logo">
+                        <img src="OJT.png" alt="OJT Certificate" class="certification-logo">
+                        <h3>JCBA Solution and Consultancy, Inc.</h3>
+                        <p>SAP B1 Technical / SDK, Web Development, JavaScript, PHP.</p>
+                        <p><small>Issued: April 2024</small></p>
+                    </div>                        
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" style="background-color: var(--light-gray);">
+            <div class="container">
+                <h2>Get In Touch</h2>
+                <div class="contact-container">
+                    <div class="contact-form">
+                        <form id="contactForm" action="https://formspree.io/f/xeogdoon" method="POST">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" required></textarea>
+                            </div>
+                            <!-- Honeypot field for spam prevention -->
+                                <input type="text" name="_gotcha" style="display:none">
+                                <button type="submit">Send Message</button>
+                        </form>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>rodney27tayuni@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>(+63) 9275472299</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Punta Sta.Ana Mania</span>
+                        </div>
+                        
+                        <h3>Download Resume</h3>
+                            <p>A detailed version of my resume is available for download.</p>
+                            <a href="https://drive.google.com/file/d/19-N1Cc-AeYjBVRFuiy69VmsU-huh-QxX/view?usp=sharing" target="_blank" rel="noopener noreferrer"><button>
+                            <i class="fas fa-download"></i> Download Resume</button></a>
+
+                        
+                        <div class="social-links">
+                            <a href="https://linkedin.com/in/rodney-tayuni-b98773303" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile">
+                            <i class="fab fa-linkedin-in"></i></a>
+
+                            <a href="https://github.com/RodneyTayuni/CapstoneProject" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile">
+                            <i class="fab fa-github"></i></a>
+
+                            <a href="https://www.facebook.com/rodney.tayuni/" target="_blank" rel="noopener noreferrer" aria-label="Visit my LinkedIn profile">
+                            <i class="fab fa-facebook"></i></a>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Rodney Tayuni's Portfolio. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <a href="#" class="to-top" id="toTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+    
+    <script>
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const toTop = document.getElementById('toTop');
+            if (window.pageYOffset > 300) {
+                toTop.classList.add('visible');
+            } else {
+                toTop.classList.remove('visible');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a, .to-top').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form submission - remove JS handling to prevent conflicts with Formspree
+        // Let the form submit naturally without JS intervention
+    </script>
+</body>
+</html>
